@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="user-edit-link">
+        <span>
+            <a style="color: #1d242e;" href="{{ url_for('update_user', id=user_id) }}">Editar Usuario</a>
+            <i class="bi bi-person-circle" style="height: 20px;"></i>
+        </span>
+    </div>
+    <div class="container col-xxl-8 px-4 py-5">
+        {% for message in messages %}
+            {% if message.author == 'assistant' %}
+                <div class="d-flex flex-row justify-content-start mb-4">
+                    <img src="{{ url_for('static', filename='pixelart_logo.png') }}" alt="avatar 1" style="width: 80px; height: 100%;">
+                    <div class="p-3 ms-3 message-assistant">
+                        <p class="small mb-0">{{message.content}}</p>
+                    </div>
+                </div>
+            {% else %}
+                <div class="d-flex flex-row justify-content-end mb-4">
+                    <div class="p-3 me-3 message-user">
+                        <p class="small mb-0">{{message.content}}</p>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        <form method="POST">
+            <div class="row">
+                <div class="input-group mb-3">
+                    {% if generos_preferidos %}
+                        {% for genero in generos_preferidos.split(",")[:3] %}
+                            <input type="submit" name="intent" value="Recomiendame una película de {{ genero.strip() }}" class="btn btn-primary btn-shortcut" />
+                        {% endfor %}
+                    {% else %}
+                        <input type="submit" class="col-sm btn btn-primary btn-shortcut" name="intent" value="Recomiendame una película de Terror" />
+                        <input type="submit" class="col-sm btn btn-primary btn-shortcut" name="intent" value="Recomiendame una película de Acción" />
+                        <input type="submit" class="col-sm btn btn-primary btn-shortcut" name="intent" value="Recomiendame una película de Comedia" />
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group mb-3">
+                    <input id="message" name="message" required="required" class="form-control" placeholder="Enviar mensaje a PeliQuest" aria-label="Tu mensaje" aria-describedby="send-message"/>
+                    <input type="submit" class="btn btn-primary" id="send-message" name="intent" value="Enviar"/>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="loadingio-eclipse">
+        <div class="ldio-rpinwye8j0b">
+          <div></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.onload = function(e){ 
+            const bottomElement = document.getElementById('message');
+            bottomElement.scrollIntoView({ behavior: 'smooth' });
+
+            const buttons = document.getElementsByClassName('btn-shortcut');
+            for(let i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener("click", function() {
+                    document.getElementById("message").value = this.value;
+                }, false);
+            }
+
+            var input = document.getElementById("message");
+            input.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    document.getElementById("send-message").click();
+                }
+            });
+
+            document.forms[0].addEventListener("submit", function(){
+                document.getElementsByClassName("loadingio-eclipse")[0].style.display = "block";
+            });
+            
+        }
+        
+    </script>
+</script>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto">
+                <form method="POST" action="{{ url_for('update_user', id=user.id) }}">
+                    <div class="card">
+                        
+                        <div class="card-header">
+                        Actualizar Usuario
+                        </div>
+
+                        <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="mb-3" style="text-align: justify;">
+                                <label for="nombre" class="form-label">Nombre:</label>
+                                <input style="max-width: 300px;" ype="text" id="nombre" name="nombre" value="{{ user.nombre }}" class="form-control" required>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="mb-3" style="text-align: justify;">
+                                <label for="email" class="form-label">Email:</label>
+                                <input style="max-width: 300px;" type="email" id="email" name="email" value="{{ user.email }}" class="form-control" required>
+                            </div>                
+                        </li>
+                        <li class="list-group-item">
+                            <div class="mb-3" style="text-align: justify;">
+                                <label for="generos_preferidos" class="form-label">Géneros Preferidos (ingresalos separados por coma):</label>
+                                <input type="text" id="generos_preferidos" name="generos_preferidos" value="{{ user.generos_preferidos }}" class="form-control" required>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="mb-3" style="text-align: justify;">
+                                <label for="peliculas_favoritas" class="form-label">Peliculas Favoritas (ingresalos separados por coma):</label>
+                                <input type="text" id="peliculas_favoritas" name="peliculas_favoritas" value="{{ user.peliculas_favoritas }}" class="form-control" required>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="mb-3" style="text-align: justify;">
+                                <label for="directores_favoritos" class="form-label">Directores Favoritos (ingresalos separados por coma):</label>
+                                <input type="text" id="directores_favoritos" name="directores_favoritos" value="{{ user.directores_favoritos }}" class="form-control" required>
+                            </div>                
+                        </li>
+                        </ul>
+                        <div class="card-body">
+                            <button type="submit" class="btn btn-primary">Actualizar Usuario</button>
+                            <a href="{{ url_for('chat') }}" class="btn btn-primary">Volver al Chat</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <!-- Mostrar mensaje si hay un parámetro 'success' o 'error' en la URL -->
+                            {% if request.args.get('success') %}
+                            <div class="alert alert-success" role="alert">
+                                {{ request.args.get('success') }}
+                            </div>
+                            {% elif request.args.get('error') %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ request.args.get('error') }}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+
+            
+        
+    </div>
+{% endblock %}

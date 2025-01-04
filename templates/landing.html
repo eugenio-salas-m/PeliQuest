@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Próximamente: Next Muby{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <!-- Imagen del logo con animación flotante -->
+  <div class="logo mb-4">
+      <img src="{{ url_for('static', filename='pixelart_logo.png') }}" alt="Logo PeliQuest" class="img-fluid">
+  </div>
+
+  <!-- Slogan -->
+  <p class="slogan mt-4" style="font-size: 28px; color: #1d242e;">
+      <i>Tu aliado experto en encontrar películas.</i>
+  </p>
+
+  <!-- Botón -->
+  <div class="mt-3">
+      <a href="chat" class="btn btn-lg px-5" style="background-color: #1d242e; color: white; border-radius: 25px;">
+          ¡Empecemos!
+      </a>
+  </div>
+</div>
+{% endblock %}

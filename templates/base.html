@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es" data-bs-theme="dark">
+    <head>
+        {% block head %}
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        {% block styles %}
+            <!-- Bootstrap CSS -->
+            {{ bootstrap.load_css() }}
+        {% endblock %}
+
+        <title>{% block title %}PeliQuest (BETA){% endblock %}</title>
+        {% endblock %}
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Port+Lligat+Slab&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+        <style>
+            /* Animación flotante */
+            @keyframes float {
+                0% {
+                    transform: translateY(0px);
+                }
+                50% {
+                    transform: translateY(-14px);
+                }
+                100% {
+                    transform: translateY(0px);
+                }
+            }
+            
+            /* Estilo global para el fondo */
+            body {
+                background-color: #b59a7d;
+                margin: 0;
+                height: 100vh; /* Hace que el body ocupe toda la altura de la pantalla */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column; /* Para organizar los elementos verticalmente */
+                height: auto;
+            }
+            
+            /* Estilo del título */
+            .title {
+                font-family: 'Port Lligat Slab', sans-serif;
+                font-size: 48px;
+                font-weight: bold;
+                color: #1d242e;
+                margin-top: 5px;
+                text-align: center;
+                position: fixed;
+                top: 10px;
+            }
+            /* Estilo link edicion usuario */
+            .user-edit-link {
+                display: block;
+                float: right;
+                position: fixed;
+                top: 10px;
+                right: 50px;
+                font-family: 'Port Lligat Slab', sans-serif;
+                font-size: 20px;
+                font-weight: bold;
+                color: #1d242e;
+            }
+
+            /* Estilo de la imagen con animación */
+            .logo img {
+                animation: float 2s ease-in-out infinite;
+                width: 200px;
+                height: auto;
+            }
+            /* Estilo de los mensajes */
+            .message-assistant {
+                background-color: #1d242e;
+                border-radius: 15px;
+                padding: 10px;
+                margin-bottom: 20px;
+            }
+
+            .message-user {
+                background-color: #fef9e3; /* Fondo para los mensajes del usuario */
+                color: #1d242e; /* Texto oscuro para los mensajes del usuario */
+                border-radius: 15px;
+                padding: 10px;
+                margin-bottom: 20px;
+            }
+            /* Centrado del contenido */
+            .container {
+                text-align: center;
+                margin-top: 60px;
+            }
+            /* Estilo del formulario de mensaje */
+            .input-group {
+                width: 100%;
+                max-width: 2000px; /* Controla el ancho del input y el botón */
+            }
+
+            /* Estilo de los botones */
+            .btn-primary {
+                background-color: #1d242e; /* Color de fondo para el botón */
+                color: #fef9e3;
+                border-radius: 25px;
+                padding: 12px 24px;
+            }
+            .card{
+                margin-top: 50px;
+            }
+            .card-header{
+                font-size: 22px;
+            }
+            @keyframes ldio-rpinwye8j0b {
+              0% { transform: rotate(0deg) }
+              50% { transform: rotate(180deg) }
+              100% { transform: rotate(360deg) }
+            }
+            .ldio-rpinwye8j0b div {
+              position: absolute;
+              animation: ldio-rpinwye8j0b 1s linear infinite;
+              width: 160px;
+              height: 160px;
+              top: 20px;
+              left: 20px;
+              border-radius: 50%;
+              box-shadow: 0 4px 0 0 #e15b64;
+              transform-origin: 80px 82px;
+            }
+            .loadingio-eclipse {
+                width: 100%;
+                height: 100%;
+                display: none;
+                overflow: hidden;
+                position: fixed;
+                top: 0;
+                z-index: 3;
+                background: rgb(160 160 160 / 30%);
+            }
+            .ldio-rpinwye8j0b {
+                width: 200px;
+                height: 200px;
+                backface-visibility: hidden;
+                transform-origin: 0 0;
+                margin-right: auto !important;
+                margin-left: auto !important;
+                position: absolute;
+                left: 50%;
+                top: 90%;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+            }
+            .ldio-rpinwye8j0b div { box-sizing: content-box; }
+        </style>
+
+    </head>
+    <body>
+        {% block body_title %}
+            <div class="title">
+                PeliQuest (BETA)
+            </div>
+        {% endblock %}
+        <!-- Your page content -->
+        {% block content %}{% endblock %}
+
+        {% block scripts %}
+            <!-- Optional JavaScript -->
+            {{ bootstrap.load_js() }}
+        {% endblock %}
+    </body>
+</html>
