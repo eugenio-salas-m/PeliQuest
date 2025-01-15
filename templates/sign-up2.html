@@ -1,0 +1,36 @@
+<form class="form" method="POST">
+    {{ form.hidden_tag() }}
+
+    <div class="field-container">
+        <p class="field">
+            {{ form.email(placeholder="Email", required=true) }}
+            <i class="fa fa-user"></i>
+        </p>
+
+        <p class="field">
+            {{ form.password(placeholder="Contraseña", required=true) }}
+            <i class="fa fa-lock"></i>
+        </p>
+
+        <p class="field">
+            {{ form.password_confirmation(placeholder="Confirmar Contraseña", required=true) }}
+            <i class="fa fa-lock"></i>
+        </p>
+    </div>
+
+    <p class="submit">
+        {{ form.submit(value="Registrarse") }}
+    </p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <p class="register-link">
+        Si ya tienes cuenta, <a href="{{ url_for('login') }}">inicia sesión aquí</a>.
+    </p>
+</form>

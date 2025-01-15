@@ -9,9 +9,10 @@ from sqlalchemy import (
     ForeignKey,
 )
 from datetime import datetime
+from flask_login import UserMixin
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
    __tablename__ = "users"
 
    id = Column(Integer, primary_key=True, autoincrement=True)
@@ -21,6 +22,7 @@ class User(db.Model):
    generos_preferidos = Column(String, nullable=False, unique=False)
    peliculas_favoritas = Column(String, nullable=False, unique=False)
    directores_favoritos = Column(String, nullable=False, unique=False)
+   password_hash = Column(String, nullable=False)
    messages = relationship("Message", back_populates="user")
 
 
