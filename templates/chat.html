@@ -22,8 +22,8 @@
 
 
 <div class="container col-xxl-8 px-4 py-5">
-    <!-- Historial de mensajes -->
     <div class="messages-container" id="messages-container">
+        <button id="toggle" class="btn-toggle">Mostrar mensajes antiguos</button>
         {% for message in messages %}
             {% if message.author == 'assistant' %}
                 <div class="d-flex flex-row justify-content-start mb-4">
@@ -144,6 +144,23 @@
     background-color: #2d3441;
 }
 
+.btn-toggle {
+    background-color: transparent;
+    color: #fef9e3;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-toggle:hover {
+    background-color: #c9a987;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    font-size: medium;
+    color: #f8f5e9;
+}
+
 .chat-input-container {
     position: sticky;
     bottom: 0;
@@ -217,7 +234,7 @@
     animation: spin 2s linear infinite;
 }
 
-div#messages-container > *:not(:nth-last-child(-n+10)) {
+div#messages-container > div:not(:nth-last-child(-n+10)):not(.visible) {
     display: none !important;
 }
 

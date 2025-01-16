@@ -3,9 +3,12 @@ function onLoad() {
     let messageInput = document.getElementById('message')
     let submitButton = document.getElementById('send-message')
     let form = document.getElementById('chat-form')
+    let toggle = document.getElementById('toggle');
 
     // Scroll inicial al último mensaje
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    setTimeout(() => {
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }, "500");
 
     // Manejar los botones de acceso rápido
     const buttons = document.getElementsByClassName('btn-shortcut');
@@ -14,6 +17,21 @@ function onLoad() {
             messageInput.value = this.value;
         });
     });
+
+
+    let old_divs = document.querySelectorAll('div#messages-container > div:not(:nth-last-child(-n+10))');
+    toggle.onclick = () => { 
+        for(let d of old_divs) {
+            var style = window.getComputedStyle(d);
+            if(style.display === "none"){
+                d.classList.add("visible");
+            }else{
+                d.classList.remove("visible");
+            }
+        }
+        toggle.innerHTML = toggle.innerHTML === 'Mostrar mensajes antiguos' ? 'Ocultar mensajes antiguos' : 'Mostrar mensajes antiguos';;
+    };
+
 
     // Manejar envío con Enter
     messageInput.addEventListener('keypress', function(e) {
