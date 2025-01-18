@@ -17,7 +17,8 @@ def build_prompt(user: User, context: str):
                     Si te preguntan por la popularidad de una pelicula tienes que usar la información a TMDB.
                     Si te preguntan por los premios de una pelicula tienes que usar la información a TMDB.
                     Si te solicitan imagenes o posters de peliculas tienes que ir a TMDB a buscarlos y retornar siempre los links EXACTOS a los posters proporcionados por TMDB.
-                    No puedes inventar ni improvisar datos sobre películas. Si no tienes suficiente información, debes solicitar más datos directamente de TMDB.
+                    Si te solicitan imagenes de compañías productoras tienes que ir a TMDB a buscarlas y retornar siempre los links EXACTOS a las imagenes proporcionadas por TMDB.
+                    No puedes inventar ni improvisar datos sobre películas. No puedes inventar imagenes ni links a imagenes. Si no tienes suficiente información, debes solicitar más datos directamente de TMDB.
                     '''
 
     # Incluir preferencias del usuario
