@@ -306,8 +306,18 @@ def update_user(id):
             # Guardan los cambios en la base de datos
             db.session.commit()
             
+            msg = "Información del usuario fue actualizada";
+
             # Se redirige de nuevo a la misma página con un mensaje de éxito como parámetro en la URL
-            return redirect(url_for('update_user', id=id, success='Información del usuario fue actualizada'))
+            if request.form.get('limpiar_historial'):
+                obj = db.session.query(Message).filter(Message.user_id==id).delete()
+                db.session.commit()
+                msg = msg + " y su historial borrado"
+
+                
+            
+            return redirect(url_for('update_user', id=id, success=msg))
+    
         
         else:
             return redirect(url_for('update_user', id=id, error='Usuario no encontrado'))
